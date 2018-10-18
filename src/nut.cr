@@ -13,7 +13,7 @@ def generate_id
 	id = id[0..5]
 
 	# we dont want duplicates, or allow characters like '/' and '+'
-	return generate_id if File.exists?("public/#{id}")
+	return generate_id if File.exists?("uploads/#{id}")
 	return generate_id if /\+|\//.match(id)
 	return id
 end
