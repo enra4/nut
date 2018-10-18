@@ -1,20 +1,21 @@
 require "kemal"
 
 # Kemal.config.env = "production"
+Kemal.config.public_folder = "./uploads"
 PORT = 3000
 SECRET = ""
 
 def generate_id
 	rand = Random.new
 	 # random a slightly higher number than needed to avoid padding issue
-	string = rand.base64(10)
+	id = rand.base64(10)
 	# we want the length of the thingy to be 6 char long
-	string = string[0..5]
+	id = id[0..5]
 
 	# we dont want duplicates, or allow characters like '/' and '+'
-	return generate_id if File.exists?("public/#{string}")
-	return generate_id if /\+|\//.match(string)
-	return string
+	return generate_id if File.exists?("public/#{id}")
+	return generate_id if /\+|\//.match(id)
+	return id
 end
 
 # get "/" do |env|
@@ -37,7 +38,7 @@ post "/upload" do |env|
 		end
 
 		id = generate_id
-		File.open("public/#{id}#{extension}", "w") do |file|
+		File.open("uploads/#{id}#{extension}", "w") do |file|
 			IO.copy(upload.body, file)
 		end
 	end
