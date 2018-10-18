@@ -1,0 +1,17 @@
+name: nut
+version: 0.1.0
+
+authors:
+  - enra4 <cudcsb@gmail.com>
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+
+targets:
+  nut:
+    main: src/nut.cr
+
+crystal: 0.26.1
+
+license: MIT
