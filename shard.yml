@@ -7,6 +7,8 @@ authors:
 dependencies:
   kemal:
     github: kemalcr/kemal
+  reeelog:
+    github: enra4/reeelog
 
 targets:
   nut:

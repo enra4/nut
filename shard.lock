@@ -1,5 +1,9 @@
 version: 1.0
 shards:
+  chalk_box:
+    github: azukiapp/crystal-chalk-box
+    version: 0.2.0
+
   exception_page:
     github: crystal-loot/exception_page
     version: 0.1.1
@@ -15,4 +19,8 @@ shards:
   radix:
     github: luislavena/radix
     version: 0.3.8
+
+  reeelog:
+    github: enra4/reeelog
+    version: 0.1.3
 
