@@ -24,16 +24,16 @@ post "/upload" do |env|
 	HTTP::FormData.parse(env.request) do |upload|
 		if Utilities.illegal_extension?(upload.filename, EXTENSIONS)
 			halt(env, status_code: 403, response: "forbidden")
-		end
+		else
+			extension = Utilities.find_extension(upload.filename)
+			id = Utilities.generate_id
+			File.open("uploads/#{id}.#{extension}", "w") do |file|
+				IO.copy(upload.body, file)
+			end
 
-		extension = Utilities.find_extension(upload.filename)
-		id = Utilities.generate_id
-		File.open("uploads/#{id}.#{extension}", "w") do |file|
-			IO.copy(upload.body, file)
+			"#{id}.#{extension}"
 		end
 	end
-
-	"#{id}.#{extension}"
 end
 
 Kemal.run(PORT)
