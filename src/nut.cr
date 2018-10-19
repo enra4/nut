@@ -10,9 +10,9 @@ EXTENSIONS = {
 	allowed: ["jpg", "png", "mp4", "gif", "webm"]
 }
 
-# get "/" do |env|
-#	env.redirect("https://enra.me")
-# end
+get "/" do |env|
+	env.redirect("https://github.com/enra4/nut")
+end
 
 post "/upload" do |env|
 	if env.request.headers["secret"] != SECRET
